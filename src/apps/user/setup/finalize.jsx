@@ -82,7 +82,8 @@ const Finalize = withForm(
                         getTokenAction.reset();
                         queueDataAction().then(qd => {
                             const initialData = {
-                                distance: 5,
+                                distance: 20,
+                                zipCode: 60313
                             };
                             for (const [k, v] of Object.entries(
                                 t['contact-data'].properties
@@ -202,116 +203,6 @@ const Finalize = withForm(
                                     {noQueueMessage}
                                     {failedMessage}
                                     <div className="kip-finalize-fields">
-                                        <ErrorFor
-                                            error={error}
-                                            field="zipCode"
-                                        />
-                                        <RetractingLabelInput
-                                            value={data.zipCode || ''}
-                                            onChange={value =>
-                                                setAndMarkModified(
-                                                    'zipCode',
-                                                    value
-                                                )
-                                            }
-                                            label={
-                                                <T
-                                                    t={t}
-                                                    k="contact-data.zip-code"
-                                                />
-                                            }
-                                        />
-                                        <label
-                                            className="kip-control-label"
-                                            htmlFor="distance"
-                                        >
-                                            <T
-                                                t={t}
-                                                k="contact-data.distance.label"
-                                            />
-                                            <span className="kip-control-notice">
-                                                <T
-                                                    t={t}
-                                                    k="contact-data.distance.notice"
-                                                />
-                                            </span>
-                                        </label>
-                                        <ErrorFor
-                                            error={error}
-                                            field="distance"
-                                        />
-                                        <RichSelect
-                                            id="distance"
-                                            value={data.distance || 5}
-                                            onChange={value =>
-                                                setAndMarkModified(
-                                                    'distance',
-                                                    value.value
-                                                )
-                                            }
-                                            options={[
-                                                {
-                                                    value: 5,
-                                                    description: (
-                                                        <T
-                                                            t={t}
-                                                            k="contact-data.distance.option"
-                                                            distance={5}
-                                                        />
-                                                    ),
-                                                },
-                                                {
-                                                    value: 10,
-                                                    description: (
-                                                        <T
-                                                            t={t}
-                                                            k="contact-data.distance.option"
-                                                            distance={10}
-                                                        />
-                                                    ),
-                                                },
-                                                {
-                                                    value: 20,
-                                                    description: (
-                                                        <T
-                                                            t={t}
-                                                            k="contact-data.distance.option"
-                                                            distance={20}
-                                                        />
-                                                    ),
-                                                },
-                                                {
-                                                    value: 30,
-                                                    description: (
-                                                        <T
-                                                            t={t}
-                                                            k="contact-data.distance.option"
-                                                            distance={30}
-                                                        />
-                                                    ),
-                                                },
-                                                {
-                                                    value: 40,
-                                                    description: (
-                                                        <T
-                                                            t={t}
-                                                            k="contact-data.distance.option"
-                                                            distance={40}
-                                                        />
-                                                    ),
-                                                },
-                                                {
-                                                    value: 50,
-                                                    description: (
-                                                        <T
-                                                            t={t}
-                                                            k="contact-data.distance.option"
-                                                            distance={50}
-                                                        />
-                                                    ),
-                                                },
-                                            ]}
-                                        />
                                         {properties}
                                     </div>
                                 </CardContent>
@@ -324,7 +215,6 @@ const Finalize = withForm(
                                                 : 'success'
                                         }
                                         onClick={submit}
-                                        disabled={submitting || !valid}
                                     >
                                         <T
                                             t={t}
